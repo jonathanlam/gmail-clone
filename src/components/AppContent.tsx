@@ -118,19 +118,19 @@ const AppContent = () => {
         </Box>
       </Div>
       <GmailTabs value={index} onChange={(_, value) => setIndex(value)}>
-        <GmailTabItem icon={<Inbox />} label={"Primary"} />
+        <GmailTabItem icon={<Inbox />} label={"Ngo and Sons"} />
         <GmailTabItem
           icon={<People />}
-          label={"Social"}
+          label={"Shared"}
           tag={"2 new"}
-          subLabel={"Youtube, LinkedIn"}
+          //subLabel={"Youtube, LinkedIn"}
         />
         <GmailTabItem
           icon={<LocalOffer />}
-          label={"Promotions"}
-          subLabel={"Pattern Matching, Medium Daily"}
+          label={"Question Bank"}
+          //subLabel={"Pattern Matching, Medium Daily"}
         />
-        <GmailTabItem icon={<Info />} label={"Updates"} tag={"15 new"} />
+        
       </GmailTabs>
       {getMailList().map((mail, i) => (
         <MailListItem key={i} {...mail} />

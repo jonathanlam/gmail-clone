@@ -54,7 +54,7 @@ const AppSidebar = () => {
               color={"#da3125"}
               startIcon={<Inbox />}
               label={"Inbox"}
-              amount={"1,198"}
+              amount={"2"}
               {...commonProps(0)}
               dotOnCollapsed={false}
             />

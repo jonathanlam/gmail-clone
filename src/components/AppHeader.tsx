@@ -73,7 +73,7 @@ const AppHeader = () => {
         </Box>
         <InputBase
           className={styles.searchInput}
-          placeholder="Search mail"
+          placeholder="Search projects"
           startAdornment={
             <IconButton className={gutterStyles.adjacent} classes={actionStyles}>
               <Search />
