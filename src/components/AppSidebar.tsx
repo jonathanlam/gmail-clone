@@ -27,7 +27,78 @@ import Settings from "@material-ui/icons/Settings";
 import Videocam from "@material-ui/icons/Videocam";
 import Keyboard from "@material-ui/icons/Keyboard";
 
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+
 const SidebarContent = getSidebarContent(styled);
+
+const NewProjectButton = ({collapsed}) => {
+  const [open, setOpen] = React.useState(false);
+  const [template, setTemplate] = React.useState("Blank");
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleChange = (event) => {
+    setTemplate(event.target.value);
+  };
+  
+
+  return (
+    <div>
+      <GmailButton collapsed={collapsed} onClick={handleClickOpen}/>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">New Project</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Create a new LaTeX project from one of the templates, or create a blank document.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Project Name"
+            type="text"
+            fullWidth
+          />
+          <Select
+          value={template}
+          onChange={handleChange}
+          label="Template"
+          fullWidth
+        >
+          <MenuItem value="Blank">Blank</MenuItem>
+          <MenuItem value="Exam">Exam</MenuItem>
+          <MenuItem value="Handout">Handout</MenuItem>
+          <MenuItem value="Question Bank">Question Bank</MenuItem>
+        </Select>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Create
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+
+}
 
 const AppSidebar = () => {
   const [index, setIndex] = React.useState(0);
@@ -42,10 +113,16 @@ const AppSidebar = () => {
     },
     dotOnCollapsed: true,
   });
+
+  const open = () => {
+    console.log("hi")
+  }
+
   return (
     <>
       <Box mt={2} mb={collapsed ? 1 : 2} pl={1}>
-        <GmailButton collapsed={collapsed} />
+        
+        <NewProjectButton collapsed={collapsed}/>
       </Box>
       <SidebarContent>
         <Box maxWidth={240}>
