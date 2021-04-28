@@ -11,7 +11,8 @@ import LabelOutlined from "@material-ui/icons/LabelOutlined";
 import Drafts from "@material-ui/icons/Drafts";
 import Archive from "@material-ui/icons/Archive";
 import Delete from "@material-ui/icons/Delete";
-import WatchLater from "@material-ui/icons/WatchLater";
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
 import Label from "@material-ui/icons/Label";
 import { useSizedIconButtonStyles } from "@mui-treasury/styles/iconButton/sized";
 import { useRowGutterStyles } from "@mui-treasury/styles/gutter/row";
@@ -81,6 +82,8 @@ const Text = styled("div")`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-box-flex: 1;
+  flex-grow:1;
 
   b {
     color: rgba(0, 0, 0, 0.87);
@@ -110,7 +113,7 @@ export type MailListItemProps = {
   initialStarred?: boolean;
   initialLabeled?: boolean;
   title: React.ReactNode;
-  description: React.ReactNode;
+  owner: React.ReactNode;
   date: React.ReactNode;
 };
 
@@ -119,7 +122,7 @@ const MailListItem = ({
   initialStarred = false,
   initialLabeled = false,
   title,
-  description,
+  owner,
   date,
 }: MailListItemProps) => {
   const actionStyles = useSizedIconButtonStyles({ childSize: 20, padding: 10 });
@@ -162,12 +165,26 @@ const MailListItem = ({
       <Title>
         {title}
       </Title>
-      <Text>
-        {description}
-      </Text>
-      {hovered ? (
+      <Title>
+        {owner}
+      </Title>
+
+      <DateLabel>
+          {date}
+        </DateLabel>
+      
         <Box flexShrink={0} ml={1} mr={0.5}>
-          <StyledTooltip title="Archived">
+        <StyledTooltip title="Download PDF">
+            <Action classes={actionStyles}>
+              <CloudDownloadIcon />
+            </Action>
+          </StyledTooltip>
+          <StyledTooltip title="Duplicate">
+            <Action classes={actionStyles}>
+              <FileCopyIcon />
+            </Action>
+          </StyledTooltip>
+          <StyledTooltip title="Archive">
             <Action classes={actionStyles}>
               <Archive />
             </Action>
@@ -177,22 +194,11 @@ const MailListItem = ({
               <Delete />
             </Action>
           </StyledTooltip>
-          <StyledTooltip title="Mark as read">
-            <Action classes={actionStyles}>
-              <Drafts />
-            </Action>
-          </StyledTooltip>
-          <StyledTooltip title="Snooze">
-            <Action classes={actionStyles}>
-              <WatchLater />
-            </Action>
-          </StyledTooltip>
+          
         </Box>
-      ) : (
-        <DateLabel>
-          {date}
-        </DateLabel>
-      )}
+      
+        
+      
     </Div>
   );
 };
