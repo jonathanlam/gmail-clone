@@ -11,8 +11,8 @@ import LabelOutlined from "@material-ui/icons/LabelOutlined";
 import Drafts from "@material-ui/icons/Drafts";
 import Archive from "@material-ui/icons/Archive";
 import Delete from "@material-ui/icons/Delete";
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
+import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
+import FileCopyIcon from "@material-ui/icons/FileCopy";
 import Label from "@material-ui/icons/Label";
 import { useSizedIconButtonStyles } from "@mui-treasury/styles/iconButton/sized";
 import { useRowGutterStyles } from "@mui-treasury/styles/gutter/row";
@@ -44,7 +44,7 @@ const Div = styled("div")`
   align-items: center;
   box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, 0.122);
   &.MailListItem-read {
-    background-color: rgba(242,245,245,0.8);
+    background-color: rgba(242, 245, 245, 0.8);
   }
   &:hover {
     box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0,
@@ -83,7 +83,7 @@ const Text = styled("div")`
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-box-flex: 1;
-  flex-grow:1;
+  flex-grow: 1;
 
   b {
     color: rgba(0, 0, 0, 0.87);
@@ -115,6 +115,48 @@ export type MailListItemProps = {
   title: React.ReactNode;
   owner: React.ReactNode;
   date: React.ReactNode;
+  id: React.ReactNode;
+};
+
+const ActionButtons = ({ project_id }) => {
+  const actionStyles = useSizedIconButtonStyles({ childSize: 20, padding: 10 });
+
+  const delete_project = () => {
+    console.log("deleting" + project_id);
+  };
+
+  const download_project = () => {
+    console.log("downloading " + project_id);
+  };
+
+  const duplicate_project = () => {
+    console.log("duplicating " + project_id);
+  };
+
+  return (
+    <Box flexShrink={0} ml={1} mr={0.5}>
+      <StyledTooltip title="Download PDF">
+        <Action classes={actionStyles}>
+          <CloudDownloadIcon />
+        </Action>
+      </StyledTooltip>
+      <StyledTooltip title="Duplicate">
+        <Action classes={actionStyles}>
+          <FileCopyIcon />
+        </Action>
+      </StyledTooltip>
+      <StyledTooltip title="Archive">
+        <Action classes={actionStyles}>
+          <Archive />
+        </Action>
+      </StyledTooltip>
+      <StyledTooltip title="Delete">
+        <Action classes={actionStyles} onClick={delete_project}>
+          <Delete />
+        </Action>
+      </StyledTooltip>
+    </Box>
+  );
 };
 
 const MailListItem = ({
@@ -124,6 +166,7 @@ const MailListItem = ({
   title,
   owner,
   date,
+  id,
 }: MailListItemProps) => {
   const actionStyles = useSizedIconButtonStyles({ childSize: 20, padding: 10 });
   const gutterStyles = useRowGutterStyles({ size: -10, before: -8 });
@@ -134,9 +177,10 @@ const MailListItem = ({
   const [labeled, setLabeled] = React.useState(initialLabeled);
   return (
     <Div
-      className={cx(read && 'MailListItem-read')}
+      className={cx(hovered && "MailListItem-read")}
       onMouseOver={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      //onClick={()=> window.open("project/"+id, "_blank")}
     >
       <StyledDrag className={grabStyles.root} />
       <Box flexShrink={0} className={gutterStyles.parent}>
@@ -162,43 +206,12 @@ const MailListItem = ({
           {labeled ? <Label /> : <LabelOutlined />}
         </StyledIconButton>
       </Box>
-      <Title>
-        {title}
-      </Title>
-      <Title>
-        {owner}
-      </Title>
+      <Title>{title}</Title>
+      <Title>{owner}</Title>
 
-      <DateLabel>
-          {date}
-        </DateLabel>
-      
-        <Box flexShrink={0} ml={1} mr={0.5}>
-        <StyledTooltip title="Download PDF">
-            <Action classes={actionStyles}>
-              <CloudDownloadIcon />
-            </Action>
-          </StyledTooltip>
-          <StyledTooltip title="Duplicate">
-            <Action classes={actionStyles}>
-              <FileCopyIcon />
-            </Action>
-          </StyledTooltip>
-          <StyledTooltip title="Archive">
-            <Action classes={actionStyles}>
-              <Archive />
-            </Action>
-          </StyledTooltip>
-          <StyledTooltip title="Delete">
-            <Action classes={actionStyles}>
-              <Delete />
-            </Action>
-          </StyledTooltip>
-          
-        </Box>
-      
-        
-      
+      <DateLabel>{date}</DateLabel>
+
+      <ActionButtons project_id={id} />
     </Div>
   );
 };
