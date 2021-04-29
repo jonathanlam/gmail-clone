@@ -10,13 +10,10 @@ import {
   makeStyles,
   InputBase,
   IconButton,
-  Avatar,
 } from "@material-ui/core";
 import Menu from "@material-ui/icons/Menu";
 import Search from "@material-ui/icons/Search";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
-import HelpOutline from "@material-ui/icons/HelpOutline";
-import Apps from "@material-ui/icons/Apps";
 
 const Header = getHeader(styled);
 const CollapseIcon = getCollapseIcon(styled);
@@ -75,7 +72,10 @@ const AppHeader = () => {
           className={styles.searchInput}
           placeholder="Search projects"
           startAdornment={
-            <IconButton className={gutterStyles.adjacent} classes={actionStyles}>
+            <IconButton
+              className={gutterStyles.adjacent}
+              classes={actionStyles}
+            >
               <Search />
             </IconButton>
           }

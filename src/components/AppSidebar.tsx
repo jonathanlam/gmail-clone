@@ -6,42 +6,38 @@ import {
   getSidebarContent,
 } from "@mui-treasury/layout";
 import { Box, List, Divider } from "@material-ui/core";
-import GmailButton from "@mui-treasury/components/button/gmail";
 import GmailSidebarItem from "@mui-treasury/components/sidebarItem/gmail";
 import { GmailSidebarItemProps } from "@mui-treasury/components/sidebarItem/gmail/GmailSidebarItem";
-import ComposeButton from "../components/ComposeButton"
+import ComposeButton from "../components/ComposeButton";
 
 // @ts-ignore
 import Menu from "@mui-treasury/components/menu/collapsible";
 
 import Inbox from "@material-ui/icons/Inbox";
-import FolderSharedIcon from '@material-ui/icons/FolderShared';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import FunctionsIcon from '@material-ui/icons/Functions';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import Info from "@material-ui/icons/Info";
+import FolderSharedIcon from "@material-ui/icons/FolderShared";
+import AssignmentIcon from "@material-ui/icons/Assignment";
+import FunctionsIcon from "@material-ui/icons/Functions";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUp from "@material-ui/icons/KeyboardArrowUp";
-import Add from '@material-ui/icons/Add';
+import Add from "@material-ui/icons/Add";
 import Settings from "@material-ui/icons/Settings";
-import Videocam from "@material-ui/icons/Videocam";
-import Keyboard from "@material-ui/icons/Keyboard";
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from "@material-ui/icons/Delete";
 
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const SidebarContent = getSidebarContent(styled);
 
-const NewProjectButton = ({collapsed}) => {
+const NewProjectButton = ({ collapsed }) => {
   const [open, setOpen] = React.useState(false);
   const [template, setTemplate] = React.useState("Blank");
 
@@ -56,16 +52,20 @@ const NewProjectButton = ({collapsed}) => {
   const handleChange = (event) => {
     setTemplate(event.target.value);
   };
-  
 
   return (
     <div>
-      <ComposeButton collapsed={collapsed} onClick={handleClickOpen}/>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <ComposeButton collapsed={collapsed} onClick={handleClickOpen} />
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">New Project</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Create a new LaTeX project from one of the templates, or create a blank document.
+            Create a new LaTeX project from one of the templates, or create a
+            blank document.
           </DialogContentText>
           <TextField
             autoFocus
@@ -76,16 +76,16 @@ const NewProjectButton = ({collapsed}) => {
             fullWidth
           />
           <Select
-          value={template}
-          onChange={handleChange}
-          label="Template"
-          fullWidth
-        >
-          <MenuItem value="Blank">Blank</MenuItem>
-          <MenuItem value="Exam">Exam</MenuItem>
-          <MenuItem value="Handout">Handout</MenuItem>
-          <MenuItem value="Question Bank">Question Bank</MenuItem>
-        </Select>
+            value={template}
+            onChange={handleChange}
+            label="Template"
+            fullWidth
+          >
+            <MenuItem value="Blank">Blank</MenuItem>
+            <MenuItem value="Exam">Exam</MenuItem>
+            <MenuItem value="Handout">Handout</MenuItem>
+            <MenuItem value="Question Bank">Question Bank</MenuItem>
+          </Select>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -98,8 +98,7 @@ const NewProjectButton = ({collapsed}) => {
       </Dialog>
     </div>
   );
-
-}
+};
 
 const AppSidebar = () => {
   const [index, setIndex] = React.useState(0);
@@ -118,8 +117,7 @@ const AppSidebar = () => {
   return (
     <>
       <Box mt={2} mb={collapsed ? 1 : 2} pl={1}>
-        
-        <NewProjectButton collapsed={collapsed}/>
+        <NewProjectButton collapsed={collapsed} />
       </Box>
       <SidebarContent>
         <Box maxWidth={240}>
@@ -203,7 +201,6 @@ const AppSidebar = () => {
         </Box>
       </SidebarContent>
       <Divider />
-      
     </>
   );
 };
