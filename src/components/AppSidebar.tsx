@@ -9,23 +9,24 @@ import { Box, List, Divider } from "@material-ui/core";
 import GmailButton from "@mui-treasury/components/button/gmail";
 import GmailSidebarItem from "@mui-treasury/components/sidebarItem/gmail";
 import { GmailSidebarItemProps } from "@mui-treasury/components/sidebarItem/gmail/GmailSidebarItem";
+import ComposeButton from "../components/ComposeButton"
+
 // @ts-ignore
 import Menu from "@mui-treasury/components/menu/collapsible";
 
 import Inbox from "@material-ui/icons/Inbox";
-import Star from "@material-ui/icons/Star";
-import InsertDriveFile from "@material-ui/icons/InsertDriveFile";
-import People from "@material-ui/icons/People";
+import FolderSharedIcon from '@material-ui/icons/FolderShared';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import FunctionsIcon from '@material-ui/icons/Functions';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import Info from "@material-ui/icons/Info";
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUp from "@material-ui/icons/KeyboardArrowUp";
-import ModeComment from "@material-ui/icons/ModeComment";
-import Schedule from "@material-ui/icons/Schedule";
-import Mail from "@material-ui/icons/Mail";
-import Report from "@material-ui/icons/Report";
+import Add from '@material-ui/icons/Add';
 import Settings from "@material-ui/icons/Settings";
 import Videocam from "@material-ui/icons/Videocam";
 import Keyboard from "@material-ui/icons/Keyboard";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -59,7 +60,7 @@ const NewProjectButton = ({collapsed}) => {
 
   return (
     <div>
-      <GmailButton collapsed={collapsed} onClick={handleClickOpen}/>
+      <ComposeButton collapsed={collapsed} onClick={handleClickOpen}/>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">New Project</DialogTitle>
         <DialogContent>
@@ -114,10 +115,6 @@ const AppSidebar = () => {
     dotOnCollapsed: true,
   });
 
-  const open = () => {
-    console.log("hi")
-  }
-
   return (
     <>
       <Box mt={2} mb={collapsed ? 1 : 2} pl={1}>
@@ -128,36 +125,31 @@ const AppSidebar = () => {
         <Box maxWidth={240}>
           <List>
             <GmailSidebarItem
-              color={"#da3125"}
+              color={"#1967d2"}
               startIcon={<Inbox />}
-              label={"Inbox"}
-              amount={"2"}
+              label={"All Projects"}
               {...commonProps(0)}
               dotOnCollapsed={false}
             />
             <GmailSidebarItem
-              startIcon={<Star />}
-              label={"Starred"}
+              color={"#1967d2"}
+              startIcon={<AccountBoxIcon />}
+              label={"Your Projects"}
               {...commonProps(1)}
             />
             <GmailSidebarItem
-              startIcon={<InsertDriveFile />}
-              label={<b>Drafts</b>}
-              amount={"5"}
+              color={"#1967d2"}
+              startIcon={<FolderSharedIcon />}
+              label={"Shared With You"}
               {...commonProps(2)}
             />
             <GmailSidebarItem
               color={"#1a73e8"}
-              startIcon={<People />}
-              label={<b>Social</b>}
+              startIcon={<DeleteIcon />}
+              label={"Trashed Projects"}
               {...commonProps(3)}
             />
-            <GmailSidebarItem
-              color={"#e37400"}
-              startIcon={<Info />}
-              label={"Updates"}
-              {...commonProps(4)}
-            />
+            <Divider />
             <Menu
               renderToggle={({
                 collapsed: menuCollapsed,
@@ -170,73 +162,48 @@ const AppSidebar = () => {
                   startIcon={
                     menuCollapsed ? <KeyboardArrowUp /> : <KeyboardArrowDown />
                   }
-                  label={collapsed ? "" : (menuCollapsed ? "Less" : "More")}
+                  label={collapsed ? "" : "Labels"}
                   onClick={onClick}
                 />
               )}
             >
               <GmailSidebarItem
-                startIcon={<ModeComment />}
-                label={"Chats"}
+                startIcon={<FunctionsIcon />}
+                label={"4U"}
                 {...commonProps(5)}
               />
               <GmailSidebarItem
-                startIcon={<Schedule />}
-                label={"Scheduled"}
+                startIcon={<FunctionsIcon />}
+                label={"3U"}
                 {...commonProps(6)}
               />
               <GmailSidebarItem
-                startIcon={<Mail />}
-                label={"All Mail"}
+                startIcon={<AssignmentIcon />}
+                label={"Trial"}
                 {...commonProps(7)}
               />
               <GmailSidebarItem
-                startIcon={<Report />}
-                label={"Spam"}
-                amount={"52"}
+                startIcon={<AssignmentIcon />}
+                label={"Quiz"}
+                //amount={"52"}
                 {...commonProps(8)}
               />
               <GmailSidebarItem
                 startIcon={<Settings />}
-                label={"Manage Labels"}
+                label={"UNSW"}
                 {...commonProps(9)}
+              />
+              <GmailSidebarItem
+                startIcon={<Add />}
+                label={"Create Label"}
+                {...commonProps(10)}
               />
             </Menu>
           </List>
         </Box>
       </SidebarContent>
       <Divider />
-      <Box maxWidth={240} pb={3} pt={1.5}>
-        <List
-          subheader={
-            <Box ml={"26px"} mr={"12px"} mb={1}>
-              <b>Meet</b>{" "}
-              <Box
-                ml={0.5}
-                display="inline-flex"
-                px={0.5}
-                bgcolor="#1a73e8"
-                color="#fff"
-                fontSize="0.75rem"
-                borderRadius={4}
-              >
-                New
-              </Box>
-            </Box>
-          }
-        >
-          <GmailSidebarItem
-            startIcon={<Videocam />}
-            label={"Start a meeting"}
-            {...commonProps(10)}
-          />
-          <GmailSidebarItem
-            startIcon={<Keyboard />}
-            label={"Join a meeting"}
-            {...commonProps(11)}
-          />
-        </List>
-      </Box>
+      
     </>
   );
 };

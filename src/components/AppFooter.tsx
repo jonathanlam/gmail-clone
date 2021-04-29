@@ -14,6 +14,7 @@ const Footer = getFooter(styled);
 
 const AppFooter = () => {
   const classes = useTextStyles();
+  return (<></>)
   return (
     <Footer>
       <Box px={'1rem'} my={'1rem'}>

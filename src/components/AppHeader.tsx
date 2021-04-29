@@ -68,7 +68,7 @@ const AppHeader = () => {
           <img
             className={styles.logo}
             alt=""
-            src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_2x.png"
+            src="https://content.app-sources.com/s/240283484741135/uploads/Images/Ngo__Sons_Logo_Website_FULL_Blue-8113696.png"
           />
         </Box>
         <InputBase
@@ -85,24 +85,6 @@ const AppHeader = () => {
             </IconButton>
           }
         />
-        <Box ml="auto" className={tinyGutterStyles.parent}>
-          <IconButton classes={actionStyles}>
-            <HelpOutline />
-          </IconButton>
-          <IconButton classes={actionStyles}>
-            <Apps />
-          </IconButton>
-        </Box>
-        <Box ml={1} mr={-1.5}>
-          <IconButton classes={avatarStyles}>
-            <div className={googleStyles.root}>
-              <Avatar
-                alt=""
-                src="https://lh3.googleusercontent.com/ogw/ADGmqu8IRt2zAKQDEDvqL5Egm51VKCxJm2eb-N8YELr3=s64-c-mo"
-              />
-            </div>
-          </IconButton>
-        </Box>
       </Toolbar>
     </Header>
   );

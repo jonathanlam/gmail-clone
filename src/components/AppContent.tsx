@@ -16,9 +16,8 @@ import Settings from "@material-ui/icons/Settings";
 import Keyboard from "@material-ui/icons/Keyboard";
 import Edit from "@material-ui/icons/Edit";
 import Inbox from "@material-ui/icons/Inbox";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import People from "@material-ui/icons/People";
-import Info from "@material-ui/icons/Info";
+import AppsIcon from '@material-ui/icons/Apps';
+import FolderIcon from '@material-ui/icons/Folder';
 import { useSizedIconButtonStyles } from "@mui-treasury/styles/iconButton/sized";
 import { useRowGutterStyles } from "@mui-treasury/styles/gutter/row";
 import ArrowMenu from "@mui-treasury/components/menu/arrow";
@@ -118,15 +117,15 @@ const AppContent = () => {
         </Box>
       </Div>
       <GmailTabs value={index} onChange={(_, value) => setIndex(value)}>
-        <GmailTabItem icon={<Inbox />} label={"Ngo and Sons"} />
+        <GmailTabItem icon={<Inbox />} label={"List"} />
         <GmailTabItem
-          icon={<People />}
-          label={"Shared"}
-          tag={"2 new"}
+          icon={<FolderIcon />}
+          label={"Folders"}
+          //tag={"2 new"}
           //subLabel={"Youtube, LinkedIn"}
         />
         <GmailTabItem
-          icon={<LocalOffer />}
+          icon={<AppsIcon />}
           label={"Question Bank"}
           //subLabel={"Pattern Matching, Medium Daily"}
         />
@@ -145,21 +144,24 @@ const getMailList = () => [
     labeled: true,
     title: "NS 4u: Induction Handout",
     owner: "Jonathan Lam",
-    date: "May 21",
+    date: "5 minutes ago by You",
+    id: 1
   },
   {
     starred: true,
     labeled: true,
     title: "NS 4u: Induction Solutions",
     owner: "Jonathan Lam",
-    date: "May 20",
+    date: "1 day ago by Vincent Tran",
+    id:2
   },
   {
     starred: true,
     labeled: true,
     title: "NS 4u: Integration Handout",
     owner: "Jonathan Lam",
-    date: "May 19",
+    date: "1 day ago by You",
+    id:3
   },
 ];
 
