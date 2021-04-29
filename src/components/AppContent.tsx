@@ -16,8 +16,8 @@ import Settings from "@material-ui/icons/Settings";
 import Keyboard from "@material-ui/icons/Keyboard";
 import Edit from "@material-ui/icons/Edit";
 import Inbox from "@material-ui/icons/Inbox";
-import AppsIcon from '@material-ui/icons/Apps';
-import FolderIcon from '@material-ui/icons/Folder';
+import AppsIcon from "@material-ui/icons/Apps";
+import FolderIcon from "@material-ui/icons/Folder";
 import { useSizedIconButtonStyles } from "@mui-treasury/styles/iconButton/sized";
 import { useRowGutterStyles } from "@mui-treasury/styles/gutter/row";
 import ArrowMenu from "@mui-treasury/components/menu/arrow";
@@ -129,7 +129,6 @@ const AppContent = () => {
           label={"Question Bank"}
           //subLabel={"Pattern Matching, Medium Daily"}
         />
-        
       </GmailTabs>
       {getMailList().map((mail, i) => (
         <MailListItem key={i} {...mail} />
@@ -145,7 +144,7 @@ const getMailList = () => [
     title: "NS 4u: Induction Handout",
     owner: "Jonathan Lam",
     date: "5 minutes ago by You",
-    id: 1
+    id: 1,
   },
   {
     starred: true,
@@ -153,7 +152,7 @@ const getMailList = () => [
     title: "NS 4u: Induction Solutions",
     owner: "Jonathan Lam",
     date: "1 day ago by Vincent Tran",
-    id:2
+    id: 2,
   },
   {
     starred: true,
@@ -161,7 +160,7 @@ const getMailList = () => [
     title: "NS 4u: Integration Handout",
     owner: "Jonathan Lam",
     date: "1 day ago by You",
-    id:3
+    id: 3,
   },
 ];
 

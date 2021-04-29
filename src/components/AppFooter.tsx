@@ -14,10 +14,10 @@ const Footer = getFooter(styled);
 
 const AppFooter = () => {
   const classes = useTextStyles();
-  return (<></>)
+  return <></>;
   return (
     <Footer>
-      <Box px={'1rem'} my={'1rem'}>
+      <Box px={"1rem"} my={"1rem"}>
         <Grid container>
           <Grid item xs={12} sm={4}>
             <Typography classes={classes}>
